@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "494b3020-27c6-4c42-9bb3-f7615f3d86d0",
+    "name": "CountryService",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48712511",
+    "_collection_link": "https://go.postman.co/collection/48712511-494b3020-27c6-4c42-9bb3-f7615f3d86d0?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "getCountries",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/getCountries",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "getCountries"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "getCountryById",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "getCountryByName",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "addCountry",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"countryName\" : \"Italy\",\r\n    \"countryCapital\" : \"Rome\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/addCountry",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "addCountry"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "updateCountry",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"id\": 4,\r\n        \"countryName\": \"Japan\",\r\n        \"countryCapital\": \"Tokyo\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/updateCountry",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "updateCountry"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/deleteCountry/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "deleteCountry",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
