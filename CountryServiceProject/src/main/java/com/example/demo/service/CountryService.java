@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.bean.Country;
 import com.example.demo.controller.AddResponse;
 
+@Service
 public class CountryService {
 
 	static HashMap<Integer, Country> countryIdMap;
@@ -29,13 +32,27 @@ public class CountryService {
 		return countries;
 	}
 
+	//path param
 	public Country getCountryById(int id) {
 		Country country = countryIdMap.get(id);
 		return country;
 	}
 
+	//query param
 	public Country getCountryByName(String countryName) {
 		Country country = null;
+		
+		
+	//Integer id;
+		
+	/*why changing int id → Integer id fixed the 400
+
+	•  Java primitive types (int, boolean, long, ...) cannot hold null. Wrapper types (Integer, Boolean, Long, ...) can.
+	•  When Jackson deserializes JSON:
+	•  If the JSON explicitly contains "id": null, Jackson will attempt to assign null to the Java property.
+	•  Assigning null to a primitive int is impossible, so Jackson (by default) throws a MismatchedInput/HttpMessageNotReadableException and Spring returns HTTP 400. Your log showed exactly that.
+	•  With Integer id, Jackson can store null in the field, so deserialization succeeds and no 400 is caused by that mapping.
+*/
 
 		for (int i : countryIdMap.keySet()) { // keySet() -> will return all the key from the HashMap
 			if (countryIdMap.get(i).getCountryName().equals(countryName)) {
@@ -52,6 +69,7 @@ public class CountryService {
 
 	}
 
+	//path param
 	public Country updateCountry(Country country) {
 		if (country.getId() > 0) {
 			countryIdMap.put(country.getId(), country);
@@ -59,6 +77,7 @@ public class CountryService {
 		return country;
 	}
 
+	//path param
 	public AddResponse deleteCountry(int id) {
 		countryIdMap.remove(id);
 		AddResponse res = new AddResponse();

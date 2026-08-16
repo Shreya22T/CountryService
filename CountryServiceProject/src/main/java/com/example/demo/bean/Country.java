@@ -2,12 +2,12 @@ package com.example.demo.bean;
 
 public class Country {
 
-	int id;
+	Integer id;
 	String countryName;
 	String countryCapital;
 	
 	
-	public Country(int id, String countryName, String countryCapital) {
+	public Country(Integer id, String countryName, String countryCapital) {
 		super();
 		this.id = id;
 		this.countryName = countryName;
@@ -33,5 +33,16 @@ public class Country {
 		this.countryCapital = countryCapital;
 	}
 	
+	
+	//Integer id;
+	
+	/*why changing int id → Integer id fixed the 400
+
+	•  Java primitive types (int, boolean, long, ...) cannot hold null. Wrapper types (Integer, Boolean, Long, ...) can.
+	•  When Jackson deserializes JSON:
+	•  If the JSON explicitly contains "id": null, Jackson will attempt to assign null to the Java property.
+	•  Assigning null to a primitive int is impossible, so Jackson (by default) throws a MismatchedInput/HttpMessageNotReadableException and Spring returns HTTP 400. Your log showed exactly that.
+	•  With Integer id, Jackson can store null in the field, so deserialization succeeds and no 400 is caused by that mapping.
+	*/
 	
 }
