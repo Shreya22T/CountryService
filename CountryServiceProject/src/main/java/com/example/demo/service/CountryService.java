@@ -46,8 +46,23 @@ public class CountryService {
 		return country;
 	}
 	
-//	public Country addCountry(Country country) {
-//		
-//	}
+	public Country addCountry(Country country) {
+		country.setId(getMaxId());
+		countryIdMap.put(country.getId(), country);
+		return country;
+		
+	}
+	
+	
+	//utility methods to get max id
+	public static int getMaxId() {
+		int max = 0;
+		for(int id:countryIdMap.keySet()) {
+			if(max<=id) {
+				max = id ;
+			}
+		}
+		return max+1;
+	}
 	
 }
