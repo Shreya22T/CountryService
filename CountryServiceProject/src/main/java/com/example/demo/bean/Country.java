@@ -73,6 +73,10 @@ public class Country {
 	 * CREATE DATABASE my_db; use my_db; create table country( id INT AUTO_INCREMENT
 	 * PRIMARY KEY, capital varchar(255) NOT NULL, country_name varchar(255) not
 	 * null); desc country;
+	 * 
+	 * insert into country values(1, "Delhi", "India"); insert into country
+	 * values(2, "Washington", "USA"); insert into country values(3, "London",
+	 * "UK");
 	 */
 
 }
