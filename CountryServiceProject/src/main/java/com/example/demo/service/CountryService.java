@@ -87,9 +87,9 @@ public class CountryService {
 	}
 
 	// path param
-	public Country updateCountry(Country country) {
-		countryRepository.save(country);
-		return country;
+	public Country updateCountry(Country country) { 
+		return countryRepository.save(country); 
+	
 		/*
 		 * if (country.getId() > 0) {
 		 * 
@@ -97,6 +97,9 @@ public class CountryService {
 		 * 
 		 */
 	}
+	
+	
+	
 
 	// path param
 	public AddResponse deleteCountry(int id) {

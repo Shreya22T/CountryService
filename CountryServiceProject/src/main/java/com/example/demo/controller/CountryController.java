@@ -59,15 +59,13 @@ public class CountryController {
 		return new ResponseEntity<Country>(con, HttpStatus.CREATED);
 	}
 
-	@PutMapping("/updateCountry")
-	public ResponseEntity<Country> updateCountry(@PathVariable(value = "id")int id, 
-								 @RequestBody Country country) {
+	@PutMapping("/updateCountry/{id}")
+	public ResponseEntity<Country> updateCountry(@PathVariable int id, @RequestBody Country country) {
 		Country existingCountry = countryService.getCountryById(id).orElseThrow();
 		existingCountry.setCountryName(country.getCountryName());
 		existingCountry.setCountryCapital(country.getCountryCapital());
-		
-		Country updatedCountry = countryService.updateCountry(country);
-		return new ResponseEntity<Country>(updatedCountry, HttpStatus.OK);
+		Country updatedCountry = countryService.updateCountry(existingCountry);
+		return ResponseEntity.ok(updatedCountry);
 	}
 
 	@DeleteMapping("/deleteCountry/{id}")
